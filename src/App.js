@@ -41,17 +41,18 @@ const App = () => {
     <div className="App">
       <header>
         <div className="logo">MEMORY GAME</div>
-        <div className="score">
-          <div className="scoreContainer">
-            <span className="label">SCORE</span>
-            <span className="score">{score}</span>
-          </div>
-          <div className="scoreContainer">
-            <span className="label">HIGH SCORE</span>
-            <span className="highScore">{highScore}</span>
-          </div>
-        </div>
       </header>
+      <div className="score">
+        <div className="scoreContainer">
+          <span className="label">SCORE</span>
+          <span className="score">{score}</span> /
+          <span className="possibleScore">{emojiList.length}</span>
+        </div>
+        <div className="scoreContainer">
+          <span className="label">HIGH SCORE</span>
+          <span className="highScore">{highScore}</span>
+        </div>
+      </div>
       <div className="cards">
         {emojiList.map((emojiObj) => {
           return (
