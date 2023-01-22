@@ -5,6 +5,19 @@ import uniqid from "uniqid";
 const App = () => {
   return (
     <div className="App">
+      <header>
+        <div className="logo">MEMORY GAME</div>
+        <div className="score">
+          <div className="scoreContainer">
+            <span className="label">SCORE</span>
+            <span className="score">0</span>
+          </div>
+          <div className="scoreContainer">
+            <span className="label">HIGH SCORE</span>
+            <span className="highScore">0</span>
+          </div>
+        </div>
+      </header>
       <div className="cards">
         {unicodeEmoji
           .getEmojisGroupedBy("subgroup")
