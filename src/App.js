@@ -32,6 +32,8 @@ const App = () => {
 
       // reset memory
       setMemory([]);
+
+      alert("Game Over!")
     }
   };
 
