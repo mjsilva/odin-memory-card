@@ -9,32 +9,47 @@ const App = () => {
   const [highScore, setHighScore] = useState(0);
   const [memory, setMemory] = useState([]);
   const [emojiList, setEmojiList] = useState(
-    unicodeEmoji.getEmojisGroupedBy("subgroup")["food-prepared"]
+    unicodeEmoji.getEmojisGroupedBy("subgroup")["animal-reptile"]
   );
 
-  const gamePlay = (e, emoji) => {
-    // not selected yet
-    if (!memory.includes(emoji)) {
-      setMemory(memory.concat([emoji]));
-      setScore(score + 1);
+  const nextPlay = (emoji) => {
+    const newScore = score + 1;
 
-      //scramble emojiList
-      setEmojiList(_.shuffle(emojiList));
-    } else {
-      // already selected
-      // sets high-score
-      if (score > highScore) {
-        setHighScore(score);
-      }
+    setMemory(memory.concat([emoji]));
+    setScore(newScore);
 
-      // reset score
-      setScore(0);
-
-      // reset memory
-      setMemory([]);
-
-      alert("Game Over!")
+    if (newScore === emojiList.length) {
+      alert("You won!!! OMG I didn't think that was possible!");
+      resetGame();
+      return;
     }
+
+    //scramble emojiList
+    setEmojiList(_.shuffle(emojiList));
+  };
+
+  const setHighScoreIfNeeded = () => {
+    if (score > highScore) {
+      setHighScore(score);
+    }
+  };
+
+  const resetGame = () => {
+    // reset score
+    setScore(0);
+
+    // reset memory
+    setMemory([]);
+  };
+
+  const gameOver = () => {
+    setHighScoreIfNeeded();
+    resetGame();
+    alert("You've picked that one before. Game Over!");
+  };
+
+  const gamePlay = (e, emoji) => {
+    !memory.includes(emoji) ? nextPlay(emoji) : gameOver();
   };
 
   return (
@@ -57,10 +72,10 @@ const App = () => {
         {emojiList.map((emojiObj) => {
           return (
             <div
+              className="card"
               onClick={(e) => {
                 gamePlay(e, emojiObj.emoji);
               }}
-              className="card"
               key={uniqid()}
             >
               <div className="emoji">{emojiObj.emoji}</div>
