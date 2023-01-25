@@ -9,7 +9,7 @@ const App = () => {
   const [highScore, setHighScore] = useState(0);
   const [memory, setMemory] = useState([]);
   const [emojiList, setEmojiList] = useState(
-    unicodeEmoji.getEmojisGroupedBy("subgroup")["animal-reptile"]
+    unicodeEmoji.getEmojisGroupedBy("subgroup")["food-prepared"]
   );
 
   const nextPlay = (emoji) => {
