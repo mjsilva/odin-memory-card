@@ -3,6 +3,7 @@ import * as unicodeEmoji from "unicode-emoji";
 import uniqid from "uniqid";
 import { useState } from "react";
 import _ from "lodash";
+import FlipMove from "react-flip-move";
 
 const App = () => {
   const [score, setScore] = useState(0);
@@ -68,7 +69,7 @@ const App = () => {
           <span className="highScore">{highScore}</span>
         </div>
       </div>
-      <div className="cards">
+      <FlipMove className="cards">
         {emojiList.map((emojiObj) => {
           return (
             <div
@@ -83,7 +84,7 @@ const App = () => {
             </div>
           );
         })}
-      </div>
+      </FlipMove>
     </div>
   );
 };
