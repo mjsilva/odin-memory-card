@@ -24,6 +24,7 @@ header .logo {
     margin-bottom: 1rem;
     justify-content: center;
     background-color: white;
+    z-index: 100;
 }
 
 .score .scoreContainer {
